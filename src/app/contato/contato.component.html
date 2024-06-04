@@ -1,11 +1,55 @@
 <h2 class="contact__title">Entre em contato</h2>
 <section class="contact__container">
-    <form class="contact-form">
-        <input type="text" placeholder="digite o seu nome">
-        <input type="assunto" placeholder="digite o assunto">
-        <input type="tel" placeholder="(00)0 0000-0000">
-        <input type="email" placeholder="digite o seu email">
-        <textarea maxlength="300" placeholder="digite a sua mensagem"></textarea>
+    <form class="contact-form" [formGroup]="formContato">
+        <input 
+            type="text" 
+            placeholder="digite o seu nome" 
+            formControlName="nome" 
+            [class.valid]="formContato.controls['nome'].valid"
+            [class.invalid]="formContato.controls['nome'].invalid &&
+            (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)"
+        >
+
+        <div
+            *ngIf="formContato.controls['nome'].invalid &&
+            (formContato.controls['nome'].touched || formContato.controls['nome'].dirty)"
+        >
+            <small class="error-message" *ngIf="formContato.controls['nome'].hasError('minlength')">
+                Esse campo precisa de no mínimo 4 caracteres.
+            </small>
+            <small class="error-message" *ngIf="formContato.controls['nome'].hasError('required')">
+                Esse campo precisa ser preenchido
+            </small>
+        </div>
+        <input 
+            type="assunto" 
+            placeholder="digite o assunto" 
+            formControlName="assunto"
+        >
+
+        <div
+            *ngIf="formContato.controls['assunto'].invalid &&
+            (formContato.controls['assunto'].touched || formContato.controls['assunto'].dirty)"
+        >
+            <small class="error-message" *ngIf="formContato.controls['assunto'].hasError('minlength')">
+                Esse campo precisa de no mínimo 10 caracteres.
+            </small>
+            <small class="error-message" *ngIf="formContato.controls['assunto'].hasError('required')">
+                Esse campo precisa ser preenchido
+            </small>
+        </div>
+
+        <input
+            type="tel" 
+            placeholder="(00) 0 0000-0000" 
+            formControlName="telefone"
+        >
+        <input 
+            type="email" 
+            placeholder="digite o seu email" 
+            formControlName="email"
+        >
+        <textarea maxlength="300" placeholder="digite a sua mensagem" formControlName="mensagem"></textarea>
         <button>Enviar</button>
     </form>
     <address>

@@ -37,14 +37,16 @@ export class CarrinhoComponent implements OnInit {
 
   removeProdutoCarrinho(produtoId: number) {
     this.carrinhoService.removerProdutoCarrinho(produtoId);
-    this.itensCarrinho = this.carrinhoService.obtemCarrinho(); // Atualiza a lista de itens do carrinho
+    this.itensCarrinho = this.carrinhoService.obtemCarrinho();
     this.calcularTotal();
+    window.location.reload();
+    console.log("removido");
   }
 
   comprar() {
     alert("Parabéns, você finalizou sua compra!");
     this.carrinhoService.limparCarrinho();
-    this.itensCarrinho = []; // Limpa a lista de itens do carrinho
-    this.calcularTotal(); // Recalcula o total
+    this.itensCarrinho = []; 
+    this.calcularTotal(); 
   }
 }
