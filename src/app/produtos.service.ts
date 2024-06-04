@@ -6,15 +6,13 @@ import { IProduto, produtos } from './produtos/produtos';
 })
 export class ProdutosService {
 
-  produtos: IProduto[] = produtos;
-
   constructor() { }
 
-  getAll(){
-    return this.produtos;
+  getAll(): IProduto[] {
+    return produtos;
   }
 
-  getOne(produtoId:  number) {
-    return this.produtos.find(produto => produto.id = produtoId);
+  getOne(id: number): IProduto | undefined {
+    return produtos.find(produto => produto.id === id);
   }
 }
