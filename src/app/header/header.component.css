@@ -1,3 +1,7 @@
+h1{
+    margin: 30px;
+}
+
 .main-header {    
     padding: 10px 0px;
     display: flex;
@@ -5,6 +9,7 @@
     justify-content: space-between;
     align-items: center;
     column-gap: 40px;
+    width: 500px;
 }
 
 .main-header__title {    
