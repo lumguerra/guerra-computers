@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
     NgIf,
   ],
   templateUrl: './contato.component.html',
-  styleUrl: './contato.component.css'
+  styleUrls: ['./contato.component.css']  // Corrected to styleUrls
 })
 export class ContatoComponent {
 
@@ -41,6 +41,11 @@ export class ContatoComponent {
       Validators.minLength(20),
       Validators.required
     ]]
-  })
+  });
+
+  enviarFormulario(){
+    alert("Formulario enviado");
+    this.formContato.reset();
+  }
 
 }
